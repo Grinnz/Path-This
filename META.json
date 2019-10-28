@@ -1,5 +1,5 @@
 {
-   "abstract" : "Path to this source file",
+   "abstract" : "Path to this source file or directory",
    "author" : [
       "Dan Book <dbook@cpan.org>"
    ],
@@ -63,6 +63,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/Grinnz/Path-This/issues"
+      },
+      "homepage" : "https://github.com/Grinnz/Path-This",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/Grinnz/Path-This.git",
+         "web" : "https://github.com/Grinnz/Path-This"
+      }
+   },
    "version" : "0.001",
    "x_Dist_Zilla" : {
       "perl" : {

@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-Path::This - Path to this source file
+Path::This - Path to this source file or directory
 
 =head1 SYNOPSIS
 
@@ -20,7 +20,7 @@ requested. Paths will be absolute with symlinks resolved.
 
 Note that the package variable or constant sub will be exported to the current
 package globally. If the same package will be used in multiple files, use the
-dynamic sub option so the file path will be calculated when the sub is called.
+dynamic sub export so the file path will be calculated when the sub is called.
 
 =head1 EXPORTS
 
@@ -36,7 +36,7 @@ dynamic sub option so the file path will be calculated when the sub is called.
 Absolute path to the current source file. Behavior is undefined when called
 without a source file (e.g. from the command line or STDIN). C<$THISFILE> will
 export a package variable, C<&THISFILE> will export a dynamic subroutine, and
-C<THISFILE> will export a constant.
+C<THISFILE> will export an inlinable constant.
 
 =head2 $THISDIR
 
@@ -50,7 +50,8 @@ C<THISFILE> will export a constant.
 Absolute path to the directory containing the current source file, or the
 current working directory when called without a source file (e.g. from the
 command line or STDIN). C<$THISDIR> will export a package variable, C<&THISDIR>
-will export a dynamic subroutine, and C<THISDIR> will export a constant.
+will export a dynamic subroutine, and C<THISDIR> will export an inlinable
+constant.
 
 =head1 BUGS
 
