@@ -6,8 +6,6 @@ use Test::More;
 
 my $thisfile = Cwd::abs_path __FILE__;
 my $thisdir = File::Basename::dirname($thisfile);
-my $fakefile = eval { Cwd::abs_path 'fake-test-file.t' };
-my $fakedir = eval { File::Basename::dirname($fakefile) };
 
 use Path::This qw($THISDIR $THISFILE);
 
@@ -26,10 +24,12 @@ is My::Test::Package1::THISDIR, $thisdir, 'THISDIR';
 is My::Test::Package2::THISFILE(), $thisfile, '&THISFILE';
 is My::Test::Package2::THISDIR(), $thisdir, '&THISDIR';
 
-# line 30 "fake-test-file.t"
-SKIP: {
-  skip 'Failed to resolve nonexistent file', 6
-    unless length $fakefile and length $fakedir;
+# line 28 "fake-test-file.t"
+my $fakefile = eval { Cwd::abs_path 'fake-test-file.t' };
+
+SKIP: { skip 'Failed to resolve nonexistent file', 6 unless length $fakefile;
+  my $fakedir = File::Basename::dirname $fakefile;
+
   is $THISFILE, $thisfile, '$THISFILE unchanged';
   is $THISDIR, $thisdir, '$THISDIR unchanged';
   is My::Test::Package1::THISFILE, $thisfile, 'THISFILE unchanged';
