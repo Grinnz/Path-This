@@ -25,9 +25,11 @@ is My::Test::Package2::THISFILE(), $thisfile, '&THISFILE';
 is My::Test::Package2::THISDIR(), $thisdir, '&THISDIR';
 
 # line 28 "fake-test-file.t"
-my $fakefile = eval { Cwd::abs_path 'fake-test-file.t' };
+my $fakefile;
+# instantiate at compile time for later symbol import
+BEGIN { $fakefile = eval { Cwd::abs_path 'fake-test-file.t' } }
 
-SKIP: { skip 'Failed to resolve nonexistent file', 6 unless length $fakefile;
+SKIP: { skip 'Failed to resolve nonexistent file', 12 unless length $fakefile;
   my $fakedir = File::Basename::dirname $fakefile;
 
   is $THISFILE, $thisfile, '$THISFILE unchanged';
@@ -39,7 +41,8 @@ SKIP: { skip 'Failed to resolve nonexistent file', 6 unless length $fakefile;
 
   Path::This->import(qw($THISDIR $THISFILE));
   package My::Test::Package1;
-  use Path::This qw(THISDIR THISFILE);
+  # make sure this doesn't run when this block is skipped
+  use if length($fakefile), 'Path::This' => qw(THISDIR THISFILE);
   package My::Test::Package2;
   Path::This->import(qw(&THISDIR &THISFILE));
   package main;
