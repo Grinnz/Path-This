@@ -7,7 +7,7 @@ use Cwd ();
 use File::Basename ();
 use Sub::Util ();
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 sub THISFILE () { Cwd::abs_path((caller)[1]) }
 sub THISDIR () {
