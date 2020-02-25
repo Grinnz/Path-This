@@ -117,8 +117,8 @@ the L</"SYNOPSIS"> shows how to perform the same task with core modules.
 
 Absolute path to the current source file. Behavior is undefined when called
 without a source file (e.g. from the command line or STDIN). C<$THISFILE> will
-export a package variable, C<&THISFILE> will export a dynamic subroutine, and
-C<THISFILE> will export an inlinable constant.
+export a package variable, C<&THISFILE> will export a dynamic subroutine (C<&>
+not needed to call it), and C<THISFILE> will export an inlinable constant.
 
 =head2 $THISDIR
 
@@ -132,8 +132,8 @@ C<THISFILE> will export an inlinable constant.
 Absolute path to the directory containing the current source file, or the
 current working directory when called without a source file (e.g. from the
 command line or STDIN). C<$THISDIR> will export a package variable, C<&THISDIR>
-will export a dynamic subroutine, and C<THISDIR> will export an inlinable
-constant.
+will export a dynamic subroutine (C<&> not needed to call it), and C<THISDIR>
+will export an inlinable constant.
 
 =head1 BUGS
 
