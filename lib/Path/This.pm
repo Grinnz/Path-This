@@ -82,13 +82,13 @@ Path::This - Path to this source file or directory
   use lib "$THISDIR/../lib";
 
   # using core modules - use constant or BEGIN to resolve __FILE__ at compile time
-  use Cwd ();
-  use File::Basename ();
-  use constant THISFILE => Cwd::abs_path(__FILE__);
-  use constant THISDIR => File::Basename::dirname(Cwd::abs_path __FILE__);
+  use Cwd 'abs_path';
+  use File::Basename 'dirname';
+  use constant THISFILE => abs_path __FILE__;
+  use constant THISDIR => dirname abs_path __FILE__;
   my ($THISFILE, $THISDIR);
-  BEGIN { $THISFILE = Cwd::abs_path(__FILE__) }
-  BEGIN { $THISDIR = File::Basename::dirname(Cwd::abs_path __FILE__) }
+  BEGIN { $THISFILE = abs_path __FILE__ }
+  BEGIN { $THISDIR = dirname abs_path __FILE__ }
 
 =head1 DESCRIPTION
 
