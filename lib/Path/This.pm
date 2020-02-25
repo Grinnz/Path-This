@@ -97,8 +97,9 @@ directory containing that file. Dynamic or constant sub versions can also be
 requested. Paths will be absolute with symlinks resolved.
 
 Note that the package variable or constant sub will be exported to the current
-package globally. If the same package will be used in multiple files, use the
-dynamic sub export so the file path will be calculated when the sub is called.
+package globally. If the same package will be defined across multiple files,
+use the dynamic sub export so the file path will be calculated when the sub is
+called.
 
 For cases where this module cannot be loaded beforehand, the last section of
 the L</"SYNOPSIS"> shows how to perform the same task with core modules.
