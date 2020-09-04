@@ -81,8 +81,9 @@ Path::This - Path to this source file or directory
   use Path::This '$THISDIR';
   use lib "$THISDIR/../lib";
 
-  # equivalent with only core modules
+  # equivalents with only core modules
   # use constant or BEGIN to resolve __FILE__ at compile time
+
   use Cwd 'abs_path';
   use File::Basename 'dirname';
 
