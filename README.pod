@@ -12,8 +12,13 @@ Path::This - Path to this source file or directory
   use Path::This '$THISDIR';
   use lib "$THISDIR/../lib";
 
-  # equivalents with only core modules
-  # use constant or BEGIN to resolve __FILE__ at compile time
+  # constant subs can be constant-folded by the parser
+
+  use Path::This 'THISDIR';
+  my $bar_path = THISDIR . '/bar'; # string formed at parse time
+
+  # equivalent values resolved with only core modules
+  # use constant or BEGIN to resolve __FILE__ as early as possible
 
   use Cwd 'abs_path';
   use File::Basename 'dirname';
