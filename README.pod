@@ -12,13 +12,19 @@ Path::This - Path to this source file or directory
   use Path::This '$THISDIR';
   use lib "$THISDIR/../lib";
 
-  # using core modules - use constant or BEGIN to resolve __FILE__ at compile time
+  # equivalent with only core modules
+  # use constant or BEGIN to resolve __FILE__ at compile time
   use Cwd 'abs_path';
   use File::Basename 'dirname';
+
   use constant THISFILE => abs_path __FILE__;
-  use constant THISDIR => dirname abs_path __FILE__;
-  my ($THISFILE, $THISDIR);
+  # or
+  my $THISFILE;
   BEGIN { $THISFILE = abs_path __FILE__ }
+
+  use constant THISDIR => dirname abs_path __FILE__;
+  # or
+  my $THISDIR;
   BEGIN { $THISDIR = dirname abs_path __FILE__ }
 
 =head1 DESCRIPTION
@@ -34,6 +40,9 @@ called.
 
 For cases where this module cannot be loaded beforehand, the last section of
 the L</"SYNOPSIS"> shows how to perform the same task with core modules.
+
+See L<lib::relative> for the specific case of adding paths to C<@INC> relative
+to the current source file.
 
 =head1 EXPORTS
 
